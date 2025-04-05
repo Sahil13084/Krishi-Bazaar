@@ -1,0 +1,28 @@
+/* Reset some browser defaults */ body, h1, h2, h3, p, input, textarea, button { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Body styling */body { font-family: "Segoe UI", sans-serif; background-color: #f3fef2; padding: 20px; max-width: 960px; margin: auto; }
+
+h1 { text-align: center; color: #2e7d32; margin-bottom: 30px; font-size: 2.2rem; }
+
+form { background: #ffffff; padding: 25px; border-radius: 12px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07); margin-bottom: 40px; display: flex; flex-direction: column; gap: 15px; }
+
+input, textarea, button { padding: 12px; font-size: 16px; border: 1px solid #c9c9c9; border-radius: 8px; }
+
+button { background-color: #388e3c; color: white; font-weight: bold; cursor: pointer; transition: background 0.2s ease; }
+
+button:hover { background-color: #2e7d32; }
+
+#listingContainer { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+
+.listing { background: white; border-radius: 12px; padding: 15px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); }
+
+.listing img { max-width: 100%; height: auto; border-radius: 8px; margin: 10px 0; }
+
+.listing h3 { color: #1b5e20; margin-bottom: 6px; }
+
+.listing a { display: inline-block; margin-top: 10px; text-decoration: none; background-color: #25D366; color: white; padding: 8px 12px; border-radius: 6px; font-size: 14px; transition: background 0.2s ease; }
+
+.listing a:hover { background-color: #1ebe59; }
+
+@media screen and (max-width: 600px) { form { padding: 15px; } }
+select { padding: 12px; font-size: 16px; border: 1px solid #c9c9c9; border-radius: 8px; background-color: white; }
