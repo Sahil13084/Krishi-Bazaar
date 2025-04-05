@@ -30,10 +30,10 @@ mongoose.connect(process.env.MONGO_URI)
 // Routes
 app.post("/api/listings", upload.single("image"), async (req, res) => {
   try {
-    const { name, product, price, phone, description } = req.body;
+    const { name, product, price, phone, description, state } = req.body;
     const imageUrl = req.file ? `/uploads/${req.file.filename}` : "";
 
-    const newListing = new Listing({ name, product, price, phone, description, imageUrl });
+    const newListing = new Listing({ name, product, price, phone, description, imageUrl, state });
     await newListing.save();
 
     res.status(201).json({ message: "Listing created", listing: newListing });
@@ -41,11 +41,8 @@ app.post("/api/listings", upload.single("image"), async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 });
-
-app.get("/api/listings", async (req, res) => {
-  const listings = await Listing.find().sort({ createdAt: -1 });
-  res.json(listings);
-});
+app.use("/uploads", express.static("uploads"));
+app.get("/api/listings", async (req, res) => { try { const listings = await Listing.find().sort({ createdAt: -1 }); res.json(listings); } catch (err) { res.status(500).json({ error: "Failed to fetch listings" }); } });
 
 // Start Server
 const PORT = process.env.PORT || 5000;
